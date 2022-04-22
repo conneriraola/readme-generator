@@ -1,6 +1,8 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
-const generateReadme = require("./generateReadme");
+var inquirer = require("inquirer");
+var fs = require("fs");
+var generateReadme = require("./generateReadme");
+
+
 
 let questions = [
     {
@@ -21,8 +23,8 @@ let questions = [
         name: "usage"
     },{
         type: "input",
-        message: "Contribution guidlines",
-        name: "contribution"
+        message: "Contributors",
+        name: "contributors"
     },{
         type: "input",
         message: "Testing instructions",
@@ -42,14 +44,77 @@ let questions = [
     },{
         type: "input",
         message: "Enter github username",
-        name: "userName"
+        name: "username"
     },{
         type: "input",
         message: "Enter github URL link",
-        name: "GitHub"
+        name: "gitbhub"
     },{
         type: "input",
         message: "Enter email address",
         name: "email" 
-    }
-];
+    },
+]
+
+function init () {
+    inquirer.prompt(questions)
+    .then((inquirerResponse, data) => {
+        console.log("Making Readme");
+        fs.writeFileSync("Readme.md", inquirerResponse, data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
+
+init();
+
+
+
+
+
+// function writeToFile(fileName, data) {
+
+//     fs.writeFile(fileName, data, function(err) {
+//         console.log(fileName)
+//         console.log(data)
+//         if (err) {
+//             return console.log(err)
+//         } else {
+//             console.log("success")
+//         }
+//     })
+// }
+
+// function init() {
+//     inquirer.prompt(questions)
+//     .then(function(data) {
+//         writeToFile("README.md", generatorMarkdown(data));
+//         console.log(data)
+
+//     })
+// }
+
+// init();
+
+
+
+// inquirer.prompt(questions).then(function(response) {
+//     console.log(response);
+
+//     const content = generateReadme(response);
+//     console.log(content);
+//     fs.writeFile("./README.md", content, function(err){
+//         if (err) throw err
+//         console.log("success");
+//     });
+// });
+
+
+
+// .then((answers) => {
+//     var content = generateReadme(response);
+//     fs.writeFile("./README.md", content, (err) =>
+//         err ? console.log(err) : console.log("Successfully created file")
+//     );
+// });
