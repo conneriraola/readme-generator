@@ -19,6 +19,9 @@ Build a readme generator that quickly creates a readme for a new project
 
 # Screenshot: 
 <img src="assets/screenshot.png" width="300px">
+
+# Video
+https://drive.google.com/file/d/1DuIeGEBhav6hHPEqCzc184TEZvnwWyPy/view?usp=sharing
     
 
 # Installation 
